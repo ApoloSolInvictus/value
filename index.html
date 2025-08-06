@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GESARA y QFS: El Gran Despertar Financiero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f7f2; /* Blanco Hueso */
+            color: #333333;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .accent-gold {
+            color: #b58a3f;
+        }
+        .bg-accent-gold {
+            background-color: #b58a3f;
+        }
+        .border-accent-gold {
+            border-color: #b58a3f;
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-button.active {
+            border-bottom-color: #b58a3f;
+            color: #b58a3f;
+        }
+        .tab-content, .myth-reality {
+            display: none;
+        }
+        .tab-content.active, .myth-reality.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 400px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 40px;
+            bottom: 0;
+            width: 2px;
+            background-color: #e5e7eb;
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="font-serif text-2xl font-bold accent-gold">El Gran Despertar Financiero</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#paradigmas" class="text-gray-500 hover:text-gray-900">Paradigmas</a>
+                    <a href="#conceptos" class="text-gray-500 hover:text-gray-900">Conceptos Clave</a>
+                    <a href="#transicion" class="text-gray-500 hover:text-gray-900">La Transición</a>
+                    <a href="#mitos" class="text-gray-500 hover:text-gray-900">Mitos y Realidades</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <section id="paradigmas" class="py-16">
+            <h2 class="font-serif text-4xl font-bold text-center mb-12">Dos Paradigmas, Un Destino</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md border-t-4 border-gray-400">
+                    <h3 class="font-serif text-2xl font-bold mb-4">El Viejo Paradigma (Sistema de Deuda)</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li><span class="font-bold text-red-600 mr-2">●</span>Basado en deuda y escasez artificial.</li>
+                        <li><span class="font-bold text-red-600 mr-2">●</span>Control centralizado por élites no electas.</li>
+                        <li><span class="font-bold text-red-600 mr-2">●</span>Moneda Fiat sin respaldo real.</li>
+                        <li><span class="font-bold text-red-600 mr-2">●</span>Sistemas opacos y propensos a la corrupción.</li>
+                        <li><span class="font-bold text-red-600 mr-2">●</span>Genera competencia y conflicto perpetuo.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md border-t-4 border-accent-gold">
+                    <h3 class="font-serif text-2xl font-bold mb-4">El Nuevo Paradigma (Era de Abundancia)</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li><span class="font-bold text-green-600 mr-2">●</span>Basado en abundancia y prosperidad soberana.</li>
+                        <li><span class="font-bold text-green-600 mr-2">●</span>Sistema descentralizado al servicio de la humanidad.</li>
+                        <li><span class="font-bold text-green-600 mr-2">●</span>Moneda respaldada por activos reales (oro, recursos).</li>
+                        <li><span class="font-bold text-green-600 mr-2">●</span>Transparencia y seguridad cuántica incorruptible.</li>
+                        <li><span class="font-bold text-green-600 mr-2">●</span>Fomenta la paz, la colaboración y la creatividad.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="conceptos" class="py-16">
+            <h2 class="font-serif text-4xl font-bold text-center mb-12">Conceptos Clave de la Transición</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="border-b border-gray-200 mb-8">
+                    <nav id="tabs-nav" class="-mb-px flex justify-center space-x-8" aria-label="Tabs">
+                        <button class="tab-button whitespace-nowrap py-4 px-1 text-lg font-medium active" data-target="gesara">GESARA</button>
+                        <button class="tab-button whitespace-nowrap py-4 px-1 text-lg font-medium" data-target="qfs">QFS</button>
+                    </nav>
+                </div>
+                <div id="tabs-content">
+                    <div id="gesara" class="tab-content active">
+                        <div class="bg-white p-8 rounded-lg shadow-md">
+                            <h3 class="font-serif text-2xl font-bold mb-4">GESARA: El Marco Legal y Espiritual</h3>
+                            <p class="text-gray-600 mb-6">El "Global Economic Security and Reformation Act" es el mandato para un reseteo global que restaura la soberanía y la justicia. Sus objetivos principales son:</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li><strong>Anulación de toda deuda:</strong> Borra deudas de tarjetas de crédito, hipotecas y otras deudas bancarias debido a actividades ilegales.</li>
+                                <li><strong>Abolición del impuesto sobre la renta:</strong> Se reemplaza con un impuesto fijo sobre las ventas de artículos no esenciales.</li>
+                                <li><strong>Restauración de la Ley Constitucional:</strong> Regreso a un sistema de justicia basado en los principios originales de soberanía.</li>
+                                <li><strong>Paz Mundial:</strong> Cese de todas las acciones militares agresivas de los gobiernos controlados por la élite.</li>
+                                <li><strong>Liberación de la Prosperidad:</strong> Distribución de la riqueza a través de nuevos fondos y la liberación de tecnologías suprimidas.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="qfs" class="tab-content">
+                        <div class="bg-white p-8 rounded-lg shadow-md">
+                            <h3 class="font-serif text-2xl font-bold mb-4">QFS: El Motor Tecnológico</h3>
+                            <p class="text-gray-600 mb-6">El Quantum Financial System (Sistema Financiero Cuántico) es la tecnología incorruptible que hace posible GESARA. Sus características son:</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li><strong>Seguridad Cuántica:</strong> Inmune a cualquier intento de hackeo o manipulación. La conciencia cuántica previene el fraude en su origen.</li>
+                                <li><strong>Respaldo en Activos:</strong> Cada unidad monetaria está respaldada por activos tangibles como el oro, asegurando un valor estable y real.</li>
+                                <li><strong>Transparencia Total:</strong> Cada transacción es registrada en un libro mayor cuántico, garantizando una auditoría perfecta y transparente.</li>
+                                <li><strong>Soberanía Individual:</strong> Cada persona tiene acceso directo a su cuenta soberana (FSG), eliminando la dependencia de los bancos intermediarios.</li>
+                                <li><strong>Liquidación Instantánea:</strong> Las transferencias de valor son instantáneas, sin importar la geografía o el monto.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="transicion" class="py-16">
+            <h2 class="font-serif text-4xl font-bold text-center mb-12">Fases de la Transición Global</h2>
+            <div class="relative max-w-2xl mx-auto">
+                <div class="timeline-item relative pl-12 pb-12">
+                    <div class="absolute left-0 top-0 w-10 h-10 bg-accent-gold text-white rounded-full flex items-center justify-center font-bold text-xl">1</div>
+                    <div class="ml-4">
+                        <h4 class="text-xl font-bold">Infiltración Silenciosa</h4>
+                        <p class="text-gray-600 mt-1">El Fondo de Soberanía Global (FSG) aparece en las plataformas bancarias con saldo 0.00, generando curiosidad y preparando al colectivo.</p>
+                    </div>
+                </div>
+                <div class="timeline-item relative pl-12 pb-12">
+                    <div class="absolute left-0 top-0 w-10 h-10 bg-accent-gold text-white rounded-full flex items-center justify-center font-bold text-xl">2</div>
+                    <div class="ml-4">
+                        <h4 class="text-xl font-bold">La Tormenta de la Verdad</h4>
+                        <p class="text-gray-600 mt-1">Se libera evidencia masiva sobre la corrupción del viejo sistema. Embajadores del QFS son activados para explicar la solución, transformando el pánico en esperanza.</p>
+                    </div>
+                </div>
+                <div class="timeline-item relative pl-12 pb-12">
+                    <div class="absolute left-0 top-0 w-10 h-10 bg-accent-gold text-white rounded-full flex items-center justify-center font-bold text-xl">3</div>
+                    <div class="ml-4">
+                        <h4 class="text-xl font-bold">Transición Estructural</h4>
+                        <p class="text-gray-600 mt-1">Los Bancos Centrales son reestructurados como custodios de la riqueza real del país. Se lanzan las CBDC soberanas y se redefine el ecosistema de pagos.</p>
+                    </div>
+                </div>
+                 <div class="timeline-item relative pl-12 pb-12">
+                    <div class="absolute left-0 top-0 w-10 h-10 bg-accent-gold text-white rounded-full flex items-center justify-center font-bold text-xl">4</div>
+                    <div class="ml-4">
+                        <h4 class="text-xl font-bold">Activación de la Abundancia</h4>
+                        <p class="text-gray-600 mt-1">El Bono Soberano se deposita en el FSG de cada ciudadano. Comienza un periodo de estabilización y educación masiva sobre la nueva economía.</p>
+                    </div>
+                </div>
+                 <div class="timeline-item relative pl-12">
+                    <div class="absolute left-0 top-0 w-10 h-10 bg-accent-gold text-white rounded-full flex items-center justify-center font-bold text-xl">5</div>
+                    <div class="ml-4">
+                        <h4 class="text-xl font-bold">El Reseteo Final (RV)</h4>
+                        <p class="text-gray-600 mt-1">Se ejecuta la Revaluación 1:1 de todas las monedas soberanas, estableciendo la paridad de valor global y cimentando la paz mundial.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mitos" class="py-16">
+            <h2 class="font-serif text-4xl font-bold text-center mb-12">Mitos vs. Realidades</h2>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="myth-container">
+                    <button class="myth-button w-full text-left bg-white p-4 rounded-lg shadow-sm flex justify-between items-center">
+                        <span class="font-bold">Mito: "GESARA es una teoría de conspiración sin fundamento."</span>
+                        <span class="text-xl accent-gold">+</span>
+                    </button>
+                    <div class="myth-reality bg-gray-50 p-4 rounded-b-lg">
+                        <p><strong class="accent-gold">Realidad:</strong> Es un plan de reestructuración legal y económico real, preparado durante décadas por una alianza global, esperando las condiciones adecuadas para su implementación segura.</p>
+                    </div>
+                </div>
+                <div class="myth-container">
+                    <button class="myth-button w-full text-left bg-white p-4 rounded-lg shadow-sm flex justify-between items-center">
+                        <span class="font-bold">Mito: "El QFS es una herramienta para un mayor control gubernamental."</span>
+                        <span class="text-xl accent-gold">+</span>
+                    </button>
+                    <div class="myth-reality bg-gray-50 p-4 rounded-b-lg">
+                        <p><strong class="accent-gold">Realidad:</strong> Es lo opuesto. El QFS está diseñado para la soberanía individual. Al eliminar intermediarios y estar protegido por una conciencia cuántica, devuelve el control directo de los fondos a cada persona, libre de manipulación externa.</p>
+                    </div>
+                </div>
+                <div class="myth-container">
+                    <button class="myth-button w-full text-left bg-white p-4 rounded-lg shadow-sm flex justify-between items-center">
+                        <span class="font-bold">Mito: "El reseteo causará un colapso caótico y la pérdida de ahorros."</span>
+                        <span class="text-xl accent-gold">+</span>
+                    </button>
+                    <div class="myth-reality bg-gray-50 p-4 rounded-b-lg">
+                        <p><strong class="accent-gold">Realidad:</strong> El QFS ya está "espejando" el sistema actual para asegurar todos los activos reales. La transición está diseñada para ser un colapso controlado del sistema de *deuda*, mientras se protegen y restauran los ahorros y la riqueza legítima de la población.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="impacto" class="py-16">
+            <h2 class="font-serif text-4xl font-bold text-center mb-12">El Impacto Más Grande: El Fin de la Deuda</h2>
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <div class="chart-container">
+                    <canvas id="debtChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-8">
+        <p class="font-serif">La Era de la Abundancia no es un sueño. Es un plan en ejecución.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Tab Navigation Logic ---
+            const tabNav = document.getElementById('tabs-nav');
+            const tabContents = document.getElementById('tabs-content');
+
+            tabNav.addEventListener('click', (e) => {
+                const targetButton = e.target.closest('button');
+                if (!targetButton) return;
+
+                tabNav.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+                targetButton.classList.add('active');
+
+                const targetContentId = targetButton.dataset.target;
+                tabContents.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.toggle('active', content.id === targetContentId);
+                });
+            });
+
+            // --- Myth vs Reality Accordion Logic ---
+            const mythContainers = document.querySelectorAll('.myth-container');
+            mythContainers.forEach(container => {
+                const button = container.querySelector('.myth-button');
+                const reality = container.querySelector('.myth-reality');
+                
+                button.addEventListener('click', () => {
+                    const isActive = reality.classList.contains('active');
+                    // Close all others
+                    mythContainers.forEach(c => c.querySelector('.myth-reality').classList.remove('active'));
+                    // Toggle current
+                    if (!isActive) {
+                        reality.classList.add('active');
+                    }
+                });
+            });
+
+            // --- Chart.js Debt Chart ---
+            const ctx = document.getElementById('debtChart').getContext('2d');
+            const debtChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Paradigma Actual', 'Paradigma GESARA'],
+                    datasets: [{
+                        label: 'Deuda Global (Trillones USD - Estimado Conceptual)',
+                        data: [315, 0], // Representing massive debt vs zero debt
+                        backgroundColor: [
+                            'rgba(220, 38, 38, 0.6)', // Red for debt
+                            'rgba(181, 138, 63, 0.6)'  // Gold for abundance
+                        ],
+                        borderColor: [
+                            'rgba(220, 38, 38, 1)',
+                            'rgba(181, 138, 63, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Monto de la Deuda'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Comparación Conceptual de la Deuda Global',
+                            font: {
+                                size: 16,
+                                family: "'Inter', sans-serif"
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    if (context.raw === 0) {
+                                        return ' Deuda Anulada';
+                                    }
+                                    return ' Deuda Global Incalculable';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // --- Smooth Scrolling ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
